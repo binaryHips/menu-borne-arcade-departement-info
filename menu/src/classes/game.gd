@@ -1,6 +1,7 @@
 extends RefCounted
 class_name GameData
 
+
 var executable_path: String
 var thumbnail: ImageTexture
 var name: StringName

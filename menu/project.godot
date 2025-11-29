@@ -12,17 +12,22 @@ config_version=5
 
 config/name="arcade_base"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://8u6knjmyjxoy"
 
 [autoload]
 
 OSRunner="*res://addons/os_runner/src/os_runner.gd"
+GameLoader="*res://src/autoloads/game_loader.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1440
 window/size/mode=3
+
+[editor]
+
+run/main_run_args="-- user://test_games"
 
 [editor_plugins]
 
@@ -33,9 +38,11 @@ enabled=PackedStringArray("res://addons/os_runner/plugin.cfg")
 folder_colors={
 "res://addons/": "red",
 "res://assets/": "blue",
+"res://src/": "orange",
 "res://src/autoloads/": "yellow",
 "res://src/classes/": "orange",
-"res://src/scenes/": "pink"
+"res://src/scenes/": "pink",
+"res://tests/": "gray"
 }
 
 [input]
