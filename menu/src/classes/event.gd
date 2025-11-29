@@ -1,6 +1,7 @@
 extends RefCounted
 class_name EventData
 
+
 var directory_path: String
 var thumbnail: ImageTexture
 var name: StringName
