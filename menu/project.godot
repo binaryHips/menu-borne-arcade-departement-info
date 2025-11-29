@@ -14,11 +14,19 @@ config/name="arcade_base"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+OSRunner="*res://addons/os_runner/src/os_runner.gd"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1440
 window/size/mode=3
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/os_runner/plugin.cfg")
 
 [file_customization]
 
