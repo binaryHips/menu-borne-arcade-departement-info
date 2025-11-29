@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dts2ed7tqfs6v"]
+
+[ext_resource type="Script" uid="uid://f84q1hgpglla" path="res://tests/colors/text_color.gd" id="1_rn3uc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wy040"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[node name="TextColor" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rn3uc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 92.0
+offset_right = 1624.0
+offset_bottom = 180.0
+text = "This is some text that needs to be readable."
+label_settings = SubResource("LabelSettings_wy040")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 400.0
+offset_right = 1288.0
+offset_bottom = 902.0
+
+[node name="ColorPicker" type="ColorPicker" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+edit_alpha = false
+color_mode = 3
+picker_shape = 3
+can_add_swatches = false
+presets_visible = false
+
+[connection signal="color_changed" from="PanelContainer/ColorPicker" to="." method="_on_color_picker_color_changed"]
