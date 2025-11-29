@@ -10,17 +10,16 @@ corner_radius_top_right = 70
 corner_radius_bottom_right = 70
 corner_radius_bottom_left = 70
 shadow_color = Color(0.4860497, 0.53346395, 0.56581146, 0.6)
-shadow_size = 10
 
 [sub_resource type="Gradient" id="Gradient_he7po"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.625)
+offsets = PackedFloat32Array(0, 0.58928573)
 colors = PackedColorArray(0, 0, 0, 0.5529412, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_t24fa"]
 gradient = SubResource("Gradient_he7po")
 fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.8448276, 0.047413792)
+fill_to = Vector2(0.5, 0)
 
 [node name="thumbnail" type="Control"]
 custom_minimum_size = Vector2(450, 300)
@@ -40,18 +39,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(225, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_he7po")
 
 [node name="ThumbNail" type="TextureRect" parent="PanelContainer"]
 layout_mode = 2
 texture = ExtResource("1_qlk8m")
 
-[node name="fade" type="TextureRect" parent="PanelContainer"]
-visible = false
+[node name="Fade" type="TextureRect" parent="PanelContainer"]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_t24fa")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/fade"]
+[node name="NameText" type="RichTextLabel" parent="PanelContainer/Fade"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.046666667
@@ -64,4 +63,3 @@ theme_override_font_sizes/normal_font_size = 36
 text = "yololololollllllllllllllllllllllllllllllllllllllllllllllllllllllll"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true

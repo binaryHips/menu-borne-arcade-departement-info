@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://b0rcxep2hnx75"]
+[gd_scene load_steps=3 format=3 uid="uid://b0rcxep2hnx75"]
+
+[ext_resource type="Script" uid="uid://dosj5oqsxijn" path="res://src/scenes/main_ui.gd" id="1_g2akd"]
+[ext_resource type="PackedScene" uid="uid://cos037j265bo0" path="res://src/scenes/revolving_container/revolving_container.tscn" id="2_neet2"]
 
 [node name="MainUi" type="Control"]
 layout_mode = 3
@@ -7,3 +10,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_g2akd")
+
+[node name="RevolvingEvents" parent="." instance=ExtResource("2_neet2")]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="RevolvingGames" parent="." instance=ExtResource("2_neet2")]
+layout_mode = 1
+anchor_top = 0.5673611
+anchor_bottom = 0.8701389
+grow_horizontal = 1
+grow_vertical = 1
