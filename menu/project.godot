@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="arcade_base"
+run/main_scene="uid://b0rcxep2hnx75"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://8u6knjmyjxoy"
 
@@ -27,7 +28,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-run/main_run_args="-- user://test_games"
+run/main_run_args="-- /home/e20210002460/Bureau/test_games"
 
 [editor_plugins]
 
@@ -44,6 +45,10 @@ folder_colors={
 "res://src/scenes/": "pink",
 "res://tests/": "gray"
 }
+
+[gui]
+
+theme/custom="uid://1k346e46451"
 
 [input]
 

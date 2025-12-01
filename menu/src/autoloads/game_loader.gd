@@ -19,6 +19,7 @@ func get_event(p_index: int) -> EventData:
 
 
 func _ready() -> void:
+	return
 	var args: PackedStringArray = OS.get_cmdline_user_args()
 	if args.is_empty():
 		push_error("No event folder provided")
@@ -109,7 +110,7 @@ func import_game(p_event_index: int, p_game_path: String) -> void:
 		push_error("Could not open event file ", config_path)
 		return
 	if not config.has_section("game"):
-		push_error("Game config file ", config_path, " does not have an event section")
+		push_error("Game config file ", config_path, " does not have a game section")
 		return
 	
 	if not config.has_section_key("game", "executable"):
