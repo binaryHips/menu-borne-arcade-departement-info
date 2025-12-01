@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://cos037j265bo0"]
+[gd_scene load_steps=2 format=3 uid="uid://cos037j265bo0"]
 
-[ext_resource type="PackedScene" uid="uid://col5ymg4dk0ol" path="res://src/scenes/thumbnail/thumbnail.tscn" id="1_m1qxu"]
 [ext_resource type="Script" uid="uid://d0qiplqneuibo" path="res://src/scenes/revolving_container/revolving_container.gd" id="1_y5pb7"]
 
 [node name="RevolvingContainer" type="HBoxContainer"]
@@ -12,24 +11,3 @@ grow_vertical = 2
 theme_override_constants/separation = 4
 script = ExtResource("1_y5pb7")
 metadata/_edit_use_anchors_ = true
-
-[node name="thumbnail" parent="." instance=ExtResource("1_m1qxu")]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="thumbnail2" parent="." instance=ExtResource("1_m1qxu")]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="NameText" parent="thumbnail2/PanelContainer/Fade" index="0"]
-text = "elem 2"
-
-[node name="thumbnail3" parent="." instance=ExtResource("1_m1qxu")]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="NameText" parent="thumbnail3/PanelContainer/Fade" index="0"]
-text = "elem 3"
-
-[editable path="thumbnail2"]
-[editable path="thumbnail3"]
