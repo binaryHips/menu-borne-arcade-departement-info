@@ -9,12 +9,12 @@ var selecting_game := false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	return
+	
 	for e in GameLoader.events:
 		var new_thumbnail: Control = preload("res://src/scenes/thumbnail/thumbnail.tscn").instantiate()
 		new_thumbnail.content = e
 		revolving_events.add_child(new_thumbnail)
-	revolving_games.setup_revolving()
+	revolving_events.setup_revolving()
 	
 	# call this once to initialize the second menu with games
 	_on_revolving_events_selected_changed(revolving_events.currently_selected)
@@ -35,6 +35,8 @@ func exit_event() -> void:
 @onready var event_date: RichTextLabel = $EventData/Control/Date
 @onready var event_description: RichTextLabel = $EventData/Control/Description
 func _on_revolving_events_selected_changed(new_selected: Control) -> void:
+	
+	
 	var data: EventData = new_selected.content
 	
 	event_title.text = data.name
@@ -51,7 +53,6 @@ func _on_revolving_events_selected_changed(new_selected: Control) -> void:
 		revolving_games.add_child(new_thumbnail)
 	revolving_games.setup_revolving()
 	
-
 @onready var game_title: RichTextLabel = $GameData/Control/Title
 @onready var game_description: RichTextLabel = $GameData/Control/Description
 @onready var game_credits: RichTextLabel = $GameData/Control/Credits
@@ -83,6 +84,7 @@ func _input(event: InputEvent) -> void:
 	if not selecting_game && is_accept_input(event):
 		enter_event()
 	elif selecting_game && is_accept_input(event):
-		pass # launch game
+		OSRunner.currently_running = OSRunner.run(revolving_games.currently_selected.content.executable_path, [])
+		OSRunner.currently_running.launch()
 	elif selecting_game && event.is_action_pressed("joy_up"):
 		exit_event()

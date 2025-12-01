@@ -19,7 +19,7 @@ func get_event(p_index: int) -> EventData:
 
 
 func _ready() -> void:
-	return
+	
 	var args: PackedStringArray = OS.get_cmdline_user_args()
 	if args.is_empty():
 		push_error("No event folder provided")
@@ -144,7 +144,6 @@ func import_game(p_event_index: int, p_game_path: String) -> void:
 	game.secondary_color = Color.html(
 		config.get_value("game", "secondary_color", GAME_DEFAULT_SECONDARY_COLOR)
 	)
-	game.should_show_name = config.get_value("game", "should_show_name", true)
 	
 	var event: EventData = events[p_event_index]
 	event.games.push_back(game)

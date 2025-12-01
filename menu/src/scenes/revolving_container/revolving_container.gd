@@ -14,29 +14,36 @@ signal selected_changed(new_selected: Control)
 
 func _ready() -> void:
 	add_theme_constant_override("separation", separation)
+	
 	setup_revolving()
 
 ## expected to be called after clearing and setting all the children in order to create the repetitions
 func setup_revolving():
+	if get_child_count() == 0:
+		return
+	
 	original_element_count = get_child_count()
+	var original_elements := get_children()
 	while get_child_count() < min_element_count:
-		for n in get_children():
-			add_child(n.duplicate())
+		for n in original_elements:
+			var new: Control = n.duplicate()
+			new.content = n.content
+			add_child(new)
 	
 	position.x = - 0.5 * (get_child_count() * (separation + element_width)) - 0.5 * (element_width)
 	position += size * 0.5
 	
+	@warning_ignore("integer_division")
 	currently_selected = get_child( get_child_count() / 2)
 
 
 var tween:Tween
-@onready var center: float = get_viewport().get_visible_rect().size.x / 2 - element_width / 2
-func _process(delta: float) -> void:
+@onready var center: float = get_viewport().get_visible_rect().size.x / 2 - (element_width + separation) / 2
+func _process(_delta: float) -> void:
 	# reduce the thumbnail the farther away it's to the center. Looks good in revolving container
 	#could be done with tweens but this aint so bad
 	for node in get_children():
 		var dst_to_center: float = abs(node.global_position.x - center )
-		print(dst_to_center)
 		var scale_factor = lerpf(1.0, 0.6, clampf(dst_to_center, 0.0, 1000.0)/1000.0)
 		node.panel_container.scale = Vector2(scale_factor, scale_factor)
 	
@@ -46,14 +53,14 @@ func _process(delta: float) -> void:
 		previous()
 	elif Input.is_action_pressed("joy_right"):
 		next()
-	if currently_selected:
-		print(currently_selected.get_node("PanelContainer/Fade/NameText").text)
 
 func previous():
 	if tween && tween.is_running():
-		return;
-		
+		return
+	
+	@warning_ignore("integer_division")
 	currently_selected = get_child( get_child_count() / 2 - 1)
+	
 	selected_changed.emit(currently_selected)
 	tween = get_tree().create_tween()
 	tween.tween_property(
@@ -70,8 +77,10 @@ func previous():
 
 func next():
 	if tween && tween.is_running():
-		return;
-	currently_selected = get_child( get_child_count() / 2 + 1)
+		return
+		
+	@warning_ignore("integer_division")
+	currently_selected = get_child( posmod(get_child_count() / 2 + 1, get_child_count()))
 	selected_changed.emit(currently_selected)
 	tween = get_tree().create_tween()
 	tween.tween_property(

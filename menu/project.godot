@@ -28,7 +28,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-run/main_run_args="-- /home/e20210002460/Bureau/test_games"
+run/main_run_args="-- C:\\Users\\Ohhnyx\\Downloads\\test_games"
 
 [editor_plugins]
 

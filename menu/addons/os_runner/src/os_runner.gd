@@ -38,9 +38,9 @@
 @tool
 extends Node
 
-
 const ProgramInstance: Script = preload("program_instance.gd")
 
+var currently_running: ProgramHandle
 
 func run(p_path: String, p_args: PackedStringArray) -> ProgramHandle:
 	var instance: ProgramInstance = ProgramInstance.new()
