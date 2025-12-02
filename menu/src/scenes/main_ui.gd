@@ -5,7 +5,7 @@ var selecting_game := false
 
 @onready var big_event: Control = $BigEvent
 @onready var revolving_events: HBoxContainer = $RevolvingEvents
-@onready var revolving_games: HBoxContainer = $RevolvingGames
+@onready var revolving_games: HBoxContainer = $RevolvingGameMover/RevolvingGames
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
@@ -23,9 +23,10 @@ func enter_event() -> void:
 	
 	# singular event thumbnail that will stay at the top
 	big_event.content = revolving_events.currently_selected.content
-	animation_player.play("event_selected")
-	
 	selecting_game = true
+	animation_player.play("event_selected")
+	# set up the texts and such
+	_on_revolving_games_selected_changed(revolving_games.currently_selected)
 
 func exit_event() -> void:
 	selecting_game = false
@@ -34,7 +35,7 @@ func exit_event() -> void:
 @onready var event_title: RichTextLabel = $EventData/Control/Title
 @onready var event_date: RichTextLabel = $EventData/Control/Date
 @onready var event_description: RichTextLabel = $EventData/Control/Description
-func _on_revolving_events_selected_changed(new_selected: Control) -> void:
+func _on_revolving_events_selected_changed(new_selected) -> void:
 	
 	
 	var data: EventData = new_selected.content
@@ -45,6 +46,7 @@ func _on_revolving_events_selected_changed(new_selected: Control) -> void:
 	
 	# update the games
 	for n in revolving_games.get_children():
+		revolving_games.remove_child(n)
 		n.queue_free()
 	
 	for game in data.games:
@@ -56,12 +58,18 @@ func _on_revolving_events_selected_changed(new_selected: Control) -> void:
 @onready var game_title: RichTextLabel = $GameData/Control/Title
 @onready var game_description: RichTextLabel = $GameData/Control/Description
 @onready var game_credits: RichTextLabel = $GameData/Control/Credits
-func _on_revolving_games_selected_changed(new_selected: Control) -> void:
+func _on_revolving_games_selected_changed(new_selected) -> void:
+	if not is_instance_valid(new_selected):
+		game_title.text = "No games here :("
+		game_credits.text = ""
+		game_description.text = ""
+		return
+	
 	var data: GameData = new_selected.content
 	
-	#game_title.text = data.name
-	#game_credits.text = data.time_information
-	#game_description.text = data.description
+	game_title.text = data.name
+	game_credits.text = data.credits
+	game_description.text = data.description
 
 @onready var particles: CPUParticles2D = $Particles
 @onready var background: TextureRect = $background
@@ -83,7 +91,7 @@ func is_accept_input(event: InputEvent) -> bool:
 func _input(event: InputEvent) -> void:
 	if not selecting_game && is_accept_input(event):
 		enter_event()
-	elif selecting_game && is_accept_input(event):
+	elif selecting_game && is_accept_input(event) && is_instance_valid(revolving_games.currently_selected):
 		OSRunner.currently_running = OSRunner.run(revolving_games.currently_selected.content.executable_path, [])
 		OSRunner.currently_running.launch()
 	elif selecting_game && event.is_action_pressed("joy_up"):

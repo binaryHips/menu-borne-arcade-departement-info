@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0rcxep2hnx75"]
+[gd_scene load_steps=20 format=3 uid="uid://b0rcxep2hnx75"]
 
 [ext_resource type="Script" uid="uid://dosj5oqsxijn" path="res://src/scenes/main_ui.gd" id="1_g2akd"]
 [ext_resource type="PackedScene" uid="uid://cos037j265bo0" path="res://src/scenes/revolving_container/revolving_container.tscn" id="2_neet2"]
 [ext_resource type="PackedScene" uid="uid://col5ymg4dk0ol" path="res://src/scenes/thumbnail/thumbnail.tscn" id="3_neet2"]
+[ext_resource type="Texture2D" uid="uid://daw6we6vlbbtk" path="res://assets/logo_dep.png" id="4_1cgnw"]
 [ext_resource type="Shader" uid="uid://daylvls8imhhu" path="res://assets/game_menue.gdshader" id="4_08cex"]
 
 [sub_resource type="Shader" id="Shader_1bseh"]
@@ -156,7 +157,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("RevolvingGames:modulate")
+tracks/4/path = NodePath("RevolvingGameMover/RevolvingGames:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -168,62 +169,62 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("RevolvingGames:position")
+tracks/5/path = NodePath("RevolvingEvents:active")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1273.9)]
+"update": 1,
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("RevolvingEvents:active")
+tracks/6/path = NodePath("RevolvingGameMover/RevolvingGames:active")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("RevolvingGames:active")
+tracks/7/path = NodePath("GameData:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("GameData:modulate")
+tracks/8/path = NodePath("EventData:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("EventData:modulate")
+tracks/9/path = NodePath("RevolvingGameMover:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0, 720)]
 }
 
 [sub_resource type="Animation" id="Animation_neet2"]
@@ -262,7 +263,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.73333335, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.375, 1.375), Vector2(1.375, 1.375)]
+"values": [Vector2(1.01, 1.01), Vector2(1.375, 1.375), Vector2(1.375, 1.375)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -271,15 +272,15 @@ tracks/3/path = NodePath("BigEvent:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.2, 0.73333335, 1),
-"transitions": PackedFloat32Array(1.6817937, 12.553334, 12.553334),
+"times": PackedFloat32Array(0, 0.2, 0.73333335, 0.8700787, 1),
+"transitions": PackedFloat32Array(1.6817937, 1.6817937, 12.553334, 12.553334, 12.553334),
 "update": 0,
-"values": [Vector2(703, 246), Vector2(703, 88.88), Vector2(703, 88.88)]
+"values": [Vector2(732.7, 194.95), Vector2(732.7, 194.95), Vector2(726, 88.88), Vector2(726, 88.88), Vector2(726, 88.88)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("RevolvingGames:modulate")
+tracks/4/path = NodePath("RevolvingGameMover/RevolvingGames:modulate")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -291,62 +292,62 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("RevolvingGames:position")
-tracks/5/interp = 2
+tracks/5/path = NodePath("RevolvingEvents:active")
+tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.8333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1273.9), Vector2(0, 460.835)]
+"times": PackedFloat32Array(0, 0.06666666, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("RevolvingEvents:active")
+tracks/6/path = NodePath("RevolvingGameMover/RevolvingGames:active")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.03333333, 0.9333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false]
+"values": [false, false, true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("RevolvingGames:active")
-tracks/7/interp = 1
+tracks/7/path = NodePath("GameData:modulate")
+tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.03333333, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("GameData:modulate")
-tracks/8/interp = 2
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("EventData:modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("EventData:modulate")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.033333335, 0.3, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RevolvingGameMover:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1273.9), Vector2(0, 460.835)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1cgnw"]
@@ -403,39 +404,50 @@ initial_velocity_max = 122.0
 [node name="RevolvingEvents" parent="." instance=ExtResource("2_neet2")]
 modulate = Color(1, 1, 1, 0.99215686)
 layout_mode = 1
-anchor_top = 0.10972222
+anchor_top = 0.13541667
 anchor_right = 0.9997084
-anchor_bottom = 0.31800002
+anchor_bottom = 0.34369445
 offset_right = 0.55981445
 offset_bottom = 0.07998657
 grow_horizontal = 1
 grow_vertical = 1
 active = true
 
-[node name="RevolvingGames" parent="." instance=ExtResource("2_neet2")]
-modulate = Color(1, 1, 1, 0)
+[node name="RevolvingGameMover" type="Control" parent="."]
 layout_mode = 1
 anchor_top = 0.32000002
-anchor_bottom = 0.623
-offset_top = 813.1
-offset_bottom = 812.7778
-grow_horizontal = 1
-grow_vertical = 1
+anchor_right = 1.0
+anchor_bottom = 0.528
+offset_top = 259.19998
+offset_bottom = 259.68036
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RevolvingGames" parent="RevolvingGameMover" instance=ExtResource("2_neet2")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_bottom = 1.0
 
 [node name="BigEvent" parent="." instance=ExtResource("3_neet2")]
 visible = false
 layout_mode = 1
-anchor_left = 0.36614582
-anchor_top = 0.17083333
-anchor_right = 0.60052085
-anchor_bottom = 0.37916666
-offset_bottom = 0.00030517578
+anchor_left = 0.33400002
+anchor_top = 0.023000002
+anchor_right = 0.656
+anchor_bottom = 0.30900002
+offset_left = 61.71997
+offset_top = 212.88
+offset_right = -106.5188
+offset_bottom = 101.04852
 pivot_offset = Vector2(225, 150)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_1cgnw")
 }
+speed_scale = 2.0
 
 [node name="GameData" type="MarginContainer" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -563,6 +575,18 @@ text = "Title here"
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.030208332
+anchor_top = 0.021527778
+anchor_right = 0.230375
+anchor_bottom = 0.08294445
+offset_right = -0.32000732
+offset_bottom = -0.44000244
+texture = ExtResource("4_1cgnw")
+metadata/_edit_use_anchors_ = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_3dkll")
 layout_mode = 1
@@ -573,4 +597,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="selected_changed" from="RevolvingEvents" to="." method="_on_revolving_events_selected_changed"]
-[connection signal="selected_changed" from="RevolvingGames" to="." method="_on_revolving_games_selected_changed"]
+[connection signal="selected_changed" from="RevolvingGameMover/RevolvingGames" to="." method="_on_revolving_games_selected_changed"]
